@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serviços - AutoMecânica Master</title>
+    <link rel="stylesheet" href="style2.css">
+        
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">AutoMecânica Master</div>
+            <nav>
+                <ul>
+                    <li><a href="home.html">Início</a></li>
+                    <li><a href="servicos.html" class="active">Serviços</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Nossos Serviços</h1>
+            <p>Oferecemos serviços especializados para carros e motos com qualidade e garantia</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- Categorias de Serviços -->
+        <div class="categorias">
+            <button class="categoria-btn active" onclick="filtrarServicos('todos')">Todos os Serviços</button>
+            <button class="categoria-btn" onclick="filtrarServicos('manutencao')">Manutenção Preventiva</button>
+            <button class="categoria-btn" onclick="filtrarServicos('mecanica')">Mecânica Geral</button>
+            <button class="categoria-btn" onclick="filtrarServicos('eletrica')">Elétrica e Eletrônica</button>
+            <button class="categoria-btn" onclick="filtrarServicos('suspensao')">Suspensão e Direção</button>
+        </div>
+
+        <!-- Grid de Serviços -->
+        <div class="servicos-grid" id="servicos-container">
+            <!-- Serviço 1: Troca de Óleo -->
+            <div class="servico-card" data-categoria="manutencao">
+                <div class="servico-imagem">
+                    <img src="https://site.zuldigital.com.br/blog/wp-content/uploads/2020/11/shutterstock_1126225445_Easy-Resize.com_.jpg">
+                </div>
+                <div class="servico-conteudo">
+                    <h3 class="servico-titulo">Troca de Óleo Completa</h3>
+                    <p class="servico-descricao">Troca de óleo do motor com filtro e verificação dos níveis de fluidos.</p>
+                    <div class="servico-detalhes">
+                        <span class="servico-preco">A partir de R$ 120,00</span>
+                        <span class="servico-duracao">⏱ 30-45 min</span>
+                    </div>
+                    <div class="servico-beneficios">
+                        <div class="beneficio-item">Óleo de alta qualidade</div>
+                        <div class="beneficio-item">Filtro original</div>
+                        <div class="beneficio-item">Verificação de fluidos</div>
+                        <div class="beneficio-item">Garantia de 90 dias</div>
+                    </div>
+                    <button class="btn-agendar" onclick="abrirModal('Troca de Óleo Completa')">Agendar Serviço</button>
+                </div>
+            </div>
+
+            <!-- Serviço 2: Revisão Geral -->
+            <div class="servico-card" data-categoria="manutencao">
+                <div class="servico-imagem">
+                    <img src="https://cpfabbri.com.br/wp-content/uploads/2023/11/image-2023-03-07T020919.440.png">
+                </div>
+                <div class="servico-conteudo">
+                    <h3 class="servico-titulo">Revisão Geral Completa</h3>
+                    <p class="servico-descricao">Check-up completo do veículo com mais de 50 itens verificados.</p>
+                    <div class="servico-detalhes">
+                        <span class="servico-preco">A partir de R$ 250,00</span>
+                        <span class="servico-duracao">⏱ 2-3 horas</span>
+                    </div>
+                    <div class="servico-beneficios">
+                        <div class="beneficio-item">50+ itens verificados</div>
+                        <div class="beneficio-item">Relatório detalhado</div>
+                        <div class="beneficio-item">Diagnóstico completo</div>
+                        <div class="beneficio-item">Garantia de 60 dias</div>
+                    </div>
+                    <button class="btn-agendar" onclick="abrirModal('Revisão Geral Completa')">Agendar Serviço</button>
+                </div>
+            </div>
+
+            <!-- Serviço 3: Alinhamento e Balanceamento -->
+            <div class="servico-card" data-categoria="suspensao">
+                <div class="servico-imagem">
+                    <img src="https://cdn.dealerspace.ai/sudoeste/Mantenha%20Seu%20Carro%20Seguro%20-%20Import%C3%A2ncia%20do%20Alinhamento%20e%20Balanceamento.png">
+                </div>
+                <div class="servico-conteudo">
+                    <h3 class="servico-titulo">Alinhamento e Balanceamento</h3>
+                    <p class="servico-descricao">Alinhamento de direção e balanceamento das rodas com equipamento laser.</p>
+                    <div class="servico-detalhes">
+                        <span class="servico-preco">A partir de R$ 150,00</span>
+                        <span class="servico-duracao">⏱ 1-2 horas</span>
+                    </div>
+                    <div class="servico-beneficios">
+                        <div class="beneficio-item">Equipamento laser</div>
+                        <div class="beneficio-item">Balanceamento digital</div>
+                        <div class="beneficio-item">Teste de rodagem</div>
+                        <div class="beneficio-item">Garantia de 30 dias</div>
+                    </div>
+                    <button class="btn-agendar" onclick="abrirModal('Alinhamento e Balanceamento')">Agendar Serviço</button>
+                </div>
+            </div>
+
+            <!-- Serviço 4: Troca de Pastilhas de Freio -->
+            <div class="servico-card" data-categoria="mecanica">
+                <div class="servico-imagem">
+                    <img src="https://www.veluplast.com.br/wp-content/uploads/2022/10/2022-11-11-trocar-as-pastilhas-de-freio.jpg">
+                </div>
+                <div class="servico-conteudo">
+                    <h3 class="servico-titulo">Troca de Pastilhas de Freio</h3>
+                    <p class="servico-descricao">Substituição das pastilhas de freio com verificação do sistema completo.</p>
+                    <div class="servico-detalhes">
+                        <span class="servico-preco">A partir de R$ 180,00</span>
+                        <span class="servico-duracao">⏱ 1-1.5 horas</span>
+                    </div>
+                    <div class="servico-beneficios">
+                        <div class="beneficio-item">Pastilhas premium</div>
+                        <div class="beneficio-item">Verificação de discos</div>
+                        <div class="beneficio-item">Lubrificação adequada</div>
+                        <div class="beneficio-item">Garantia de 90 dias</div>
+                    </div>
+                    <button class="btn-agendar" onclick="abrirModal('Troca de Pastilhas de Freio')">Agendar Serviço</button>
+                </div>
+            </div>
+
+            <!-- Serviço 5: Manutenção Elétrica -->
+            <div class="servico-card" data-categoria="eletrica">
+                <div class="servico-imagem">
+                    <img src="https://widmen.com.br/wp-content/uploads/2024/07/OIP-2024-07-30T134519.693.jpg">
+                </div>
+                <div class="servico-conteudo">
+                    <h3 class="servico-titulo">Diagnóstico e Reparo Elétrico</h3>
+                    <p class="servico-descricao">Diagnóstico completo do sistema elétrico e reparo de falhas.</p>
+                    <div class="servico-detalhes">
+                        <span class="servico-preco">A partir de R$ 200,00</span>
+                        <span class="servico-duracao">⏱ 2-4 horas</span>
+                    </div>
+                    <div class="servico-beneficios">
+                        <div class="beneficio-item">Scanner profissional</div>
+                        <div class="beneficio-item">Diagnóstico preciso</div>
+                        <div class="beneficio-item">Peças originais</div>
+                        <div class="beneficio-item">Garantia de 120 dias</div>
+                    </div>
+                    <button class="btn-agendar" onclick="abrirModal('Diagnóstico e Reparo Elétrico')">Agendar Serviço</button>
+                </div>
+            </div>
+
+            <!-- Serviço 6: Troca de Pneus -->
+            <div class="servico-card" data-categoria="manutencao">
+                <div class="servico-imagem">
+                    <img src="https://blog.ferramentaskennedy.com.br/wp-content/uploads/2024/05/Calibragem-de-peneu.jpg">
+                </div>
+                <div class="servico-conteudo">
+                    <h3 class="servico-titulo">Troca e Calibragem de Pneus</h3>
+                    <p class="servico-descricao">Substituição de pneus com calibragem precisa e balanceamento.</p>
+                    <div class="servico-detalhes">
+                        <span class="servico-preco">A partir de R$ 80,00</span>
+                        <span class="servico-duracao">⏱ 45-60 min</span>
+                    </div>
+                    <div class="servico-beneficios">
+                        <div class="beneficio-item">Pneus de qualidade</div>
+                        <div class="beneficio-item">Calibragem precisa</div>
+                        <div class="beneficio-item">Inspeção de rodas</div>
+                        <div class="beneficio-item">Garantia do fabricante</div>
+                    </div>
+                    <button class="btn-agendar" onclick="abrirModal('Troca e Calibragem de Pneus')">Agendar Serviço</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Seção de Destaques -->
+        <section class="destaques">
+            <div class="container">
+                <h2 class="section-title">Por que escolher nossos serviços?</h2>
+                <div class="destaque-grid">
+                    <div class="destaque-card">
+                        <div class="destaque-icone">🔧</div>
+                        <h3 class="destaque-titulo">Técnicos Certificados</h3>
+                        <p class="destaque-descricao">Nossa equipe possui certificações técnicas e experiência comprovada.</p>
+                    </div>
+                    <div class="destaque-card">
+                        <div class="destaque-icone">⚡</div>
+                        <h3 class="destaque-titulo">Agilidade no Serviço</h3>
+                        <p class="destaque-descricao">Serviços rápidos e eficientes sem comprometer a qualidade.</p>
+                    </div>
+                    <div class="destaque-card">
+                        <div class="destaque-icone">🛡️</div>
+                        <h3 class="destaque-titulo">Garantia Total</h3>
+                        <p class="destaque-descricao">Todos os serviços contam com garantia e suporte pós-venda.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <h2 class="section-title">Perguntas Frequentes</h2>
+            <p class="section-subtitle">Tire suas dúvidas sobre nossos serviços</p>
+
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-pergunta" onclick="toggleFaq(this)">
+                        Qual o prazo de garantia dos serviços?
+                        <span>+</span>
+                    </div>
+                    <div class="faq-resposta">
+                        <p>A garantia varia conforme o serviço realizado. Troca de óleo: 90 dias, Reparos elétricos: 120 dias, Serviços mecânicos: 60 dias. Consulte nosso atendimento para detalhes específicos.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-pergunta" onclick="toggleFaq(this)">
+                        Preciso agendar com antecedência?
+                        <span>+</span>
+                    </div>
+                    <div class="faq-resposta">
+                        <p>Recomendamos agendar com 24h de antecedência para garantir melhor horário. Aceitamos serviços sem agendamento, sujeito à disponibilidade da equipe.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-pergunta" onclick="toggleFaq(this)">
+                        Trabalham com peças originais?
+                        <span>+</span>
+                    </div>
+                    <div class="faq-resposta">
+                        <p>Sim, utilizamos peças originais ou equivalentes de primeira linha, sempre com aprovação prévia do cliente.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-pergunta" onclick="toggleFaq(this)">
+                        Atendem motos e caminhões?
+                        <span>+</span>
+                    </div>
+                    <div class="faq-resposta">
+                        <p>Sim, atendemos carros, motos e caminhões leves. Para caminhões pesados, consulte nossa capacidade técnica.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Modal de Agendamento -->
+    <div class="modal" id="modal-agendamento">
+        <div class="modal-content">
+            <span class="close-modal" onclick="fecharModal()">&times;</span>
+            <h2>Agendar Serviço</h2>
+            <p id="modal-servico-titulo" style="color: var(--accent); margin-bottom: 1rem;"></p>
+            
+            <form id="form-agendamento">
+                <div style="margin-bottom: 1rem;">
+                    <label for="nome">Nome completo *</label>
+                    <input type="text" id="nome" required>
+                </div>
+                
+                <div style="margin-bottom: 1rem;">
+                    <label for="telefone">Telefone *</label>
+                    <input type="tel" id="telefone" required>
+                </div>
+                
+                <div style="margin-bottom: 1rem;">
+                    <label for="veiculo">Veículo *</label>
+                    <input type="text" id="veiculo" placeholder="Ex: Honda Civic 2020" required>
+                </div>
+                
+                <div style="margin-bottom: 1rem;">
+                    <label for="data">Data preferencial *</label>
+                    <input type="date" id="data" required>
+                </div>
+                
+                <div style="margin-bottom: 1rem;">
+                    <label for="horario">Horário preferencial *</label>
+                    <select id="horario" required>
+                        <option value="">Selecione...</option>
+                        <option value="08:00">08:00</option>
+                        <option value="09:00">09:00</option>
+                        <option value="10:00">10:00</option>
+                        <option value="11:00">11:00</option>
+                        <option value="14:00">14:00</option>
+                        <option value="15:00">15:00</option>
+                        <option value="16:00">16:00</option>
+                        <option value="17:00">17:00</option>
+                    </select>
+                </div>
+                
+                <div style="margin-bottom: 1rem;">
+                    <label for="observacoes">Observações</label>
+                    <textarea id="observacoes" rows="3"></textarea>
+                </div>
+                
+                <button type="submit" style="background-color: var(--accent); color: black; padding: 0.75rem; border: none; border-radius: 4px; width: 100%; cursor: pointer;">
+                    Confirmar Agendamento
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>AutoMecânica Master</h3>
+                    <p>Especializada em manutenção de carros e motos com qualidade e garantia.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contato</h3>
+                    <p>Email: contato@automecanica.com</p>
+                    <p>Telefone: (11) 9999-9999</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Horário de Funcionamento</h3>
+                    <p>Segunda a Sexta: 8h às 18h</p>
+                    <p>Sábado: 8h às 12h</p>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 AutoMecânica Master. Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Filtro de serviços por categoria
+        function filtrarServicos(categoria) {
+            const servicos = document.querySelectorAll('.servico-card');
+            const botoes = document.querySelectorAll('.categoria-btn');
+            
+            // Atualizar botões ativos
+            botoes.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Filtrar serviços
+            servicos.forEach(servico => {
+                if (categoria === 'todos' || servico.dataset.categoria === categoria) {
+                    servico.style.display = 'block';
+                } else {
+                    servico.style.display = 'none';
+                }
+            });
+        }
+
+        // FAQ toggle
+        function toggleFaq(element) {
+            const resposta = element.nextElementSibling;
+            const icone = element.querySelector('span');
+            
+            resposta.classList.toggle('active');
+            icone.textContent = resposta.classList.contains('active') ? '-' : '+';
+        }
+
+        // Modal functions
+        function abrirModal(servico) {
+            document.getElementById('modal-servico-titulo').textContent = servico;
+            document.getElementById('modal-agendamento').style.display = 'block';
+            
+            // Set minimum date to today
+            const hoje = new Date();
+            const dataInput = document.getElementById('data');
+            dataInput.min = hoje.toISOString().split('T')[0];
+            
+            // Set default date to tomorrow
+            const amanha = new Date(hoje);
+            amanha.setDate(hoje.getDate() + 1);
+            dataInput.value = amanha.toISOString().split('T')[0];
+        }
+
+        function fecharModal() {
+            document.getElementById('modal-agendamento').style.display = 'none';
+            document.getElementById('form-agendamento').reset();
+        }
+
+        // Form submission
+        document.getElementById('form-agendamento').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const servico = document.getElementById('modal-servico-titulo').textContent;
+            const nome = document.getElementById('nome').value;
+            const telefone = document.getElementById('telefone').value;
+            const veiculo = document.getElementById('veiculo').value;
+            const data = document.getElementById('data').value;
+            const horario = document.getElementById('horario').value;
+            
+            // Simular envio (em produção, integrar com backend)
+            alert(`Agendamento solicitado!\n\nServiço: ${servico}\nNome: ${nome}\nTelefone: ${telefone}\nVeículo: ${veiculo}\nData: ${data} às ${horario}\n\nEntraremos em contato para confirmar!`);
+            
+            fecharModal();
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(e) {
+            const modal = document.getElementById('modal-agendamento');
+            if (e.target === modal) {
+                fecharModal();
+            }
+        });
+
+        // Initialize date field
+        document.addEventListener('DOMContentLoaded', function() {
+            const hoje = new Date();
+            const dataInput = document.getElementById('data');
+            dataInput.min = hoje.toISOString().split('T')[0];
+            
+            // Set default date to tomorrow
+            const amanha = new Date(hoje);
+            amanha.setDate(hoje.getDate() + 1);
+            dataInput.value = amanha.toISOString().split('T')[0];
+        });
+    </script>
+</body>
+</html>

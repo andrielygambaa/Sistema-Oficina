@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - AutoMecânica Master</title>
+    <link rel="stylesheet" href="style3.css">
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">AutoMecânica Master</div>
+            <nav>
+                <ul>
+                    <li><a href="home.html">Início</a></li>
+                    <li><a href="servicos.html">Serviços</a></li>
+                    <li><a href="contato.html" class="active">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Entre em Contato</h1>
+            <p>Estamos aqui para ajudar com todos os seus serviços automotivos. Fale conosco!</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- Informações de Contato -->
+        <section class="contato-info">
+            <div class="info-card">
+                <div class="info-icone">📍</div>
+                <h3 class="info-titulo">Endereço</h3>
+                <div class="info-detalhes">
+                    <p>Rua das Oficinas, 123</p>
+                    <p>Bairro Industrial, São Paulo - SP</p>
+                    <p>CEP: 01234-567</p>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <div class="info-icone">📞</div>
+                <h3 class="info-titulo">Telefone</h3>
+                <div class="info-detalhes">
+                    <p><a href="tel:+5511999999999">(11) 9999-9999</a></p>
+                    <p><a href="tel:+5511999999998">(11) 9999-9998</a></p>
+                    <p>WhatsApp: <a href="https://wa.me/5511999999999">(11) 9999-9999</a></p>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <div class="info-icone">✉️</div>
+                <h3 class="info-titulo">Email</h3>
+                <div class="info-detalhes">
+                    <p><a href="mailto:contato@automecanica.com">contato@automecanica.com</a></p>
+                    <p><a href="mailto:atendimento@automecanica.com">atendimento@automecanica.com</a></p>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <div class="info-icone">🕒</div>
+                <h3 class="info-titulo">Horário</h3>
+                <div class="info-detalhes">
+                    <p>Segunda a Sexta: 08:00 - 18:00</p>
+                    <p>Sábado: 08:00 - 12:00</p>
+                    <p>Domingo: Fechado</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Formulário de Contato -->
+        <section class="form-section">
+            <h2 class="form-title">Envie uma Mensagem</h2>
+            <p class="form-subtitle">Preencha o formulário abaixo e entraremos em contato em até 24 horas.</p>
+            
+            <div id="alert-container"></div>
+            
+            <form id="form-contato">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="nome">Nome Completo *</label>
+                        <input type="text" id="nome" name="nome" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="telefone">Telefone *</label>
+                        <input type="tel" id="telefone" name="telefone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="assunto">Assunto *</label>
+                        <select id="assunto" name="assunto" required>
+                            <option value="">Selecione o assunto...</option>
+                            <option value="agendamento">Agendamento de Serviço</option>
+                            <option value="orcamento">Orçamento</option>
+                            <option value="duvida">Dúvida Geral</option>
+                            <option value="reclamacao">Reclamação</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="mensagem">Mensagem *</label>
+                    <textarea id="mensagem" name="mensagem" placeholder="Descreva sua solicitação ou dúvida..." required></textarea>
+                </div>
+                
+                <button type="submit" class="btn-submit">Enviar Mensagem</button>
+            </form>
+        </section>
+
+        <!-- Mapa -->
+        <section class="map-section">
+            <h2 class="section-title">Nossa Localização</h2>
+            <p class="section-subtitle">Encontre-nos facilmente no mapa abaixo</p>
+            <div class="map-container">
+                <div class="map-placeholder">
+                    <div>
+                        <p>🗺️ Mapa Integrado (Google Maps)</p>
+                        <p>Endereço: Rua das Oficinas, 123 - São Paulo, SP</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Redes Sociais -->
+        <section class="redes-section">
+            <h2 class="section-title">Siga-nos nas Redes Sociais</h2>
+            <p class="section-subtitle">Acompanhe nossas novidades e promoções</p>
+            <div class="redes-grid">
+                <a href="" class="rede-social" target="_blank">
+                    <div class="rede-icone">📘</div>
+                    <span>Facebook</span>
+                </a>
+                <a href="" class="rede-social" target="_blank">
+                    <div class="rede-icone">📷</div>
+                    <span>Instagram</span>
+                </a>
+                <a href="" class="rede-social" target="_blank">
+                    <div class="rede-icone">📺</div>
+                    <span>YouTube</span>
+                </a>
+                <a href="" class="rede-social" target="_blank">
+                    <div class="rede-icone">💬</div>
+                    <span>WhatsApp</span>
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>AutoMecânica Master</h3>
+                    <p>Especializada em manutenção de carros e motos com qualidade e garantia.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contato</h3>
+                    <p>Email: contato@automecanica.com</p>
+                    <p>Telefone: (11) 9999-9999</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Horário de Funcionamento</h3>
+                    <p>Segunda a Sexta: 8h às 18h</p>
+                    <p>Sábado: 8h às 12h</p>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 AutoMecânica Master. Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Função para mostrar alertas
+        function mostrarAlerta(mensagem, tipo) {
+            const container = document.getElementById('alert-container');
+            const alerta = document.createElement('div');
+            alerta.className = `alert alert-${tipo}`;
+            alerta.textContent = mensagem;
+            container.appendChild(alerta);
+            alerta.style.display = 'block';
+            
+            // Remover alerta após 5 segundos
+            setTimeout(() => {
+                alerta.remove();
+            }, 5000);
+        }
+
+        // Formulário de Contato
+        document.getElementById('form-contato').addEventListener('submit', function(e) {
+            e.preventDefault();})
+            
+            // Validação básica (pode ser expandida)
+            const nome = document.getElementById('nome').value.trim();
+        

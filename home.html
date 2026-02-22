@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Oficina - Carros e Motos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">AutoMecânica Master</div>
+            <nav>
+                <ul>
+                    <li><a href="home.html" class="active">Início</a></li>
+                    <li><a href="servicos.html">Serviços</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Sistema de Gerenciamento de Oficina</h1>
+            <p>Controle completo de veículos, serviços e clientes em uma plataforma moderna e eficiente</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="tabs">
+            <div class="tab-buttons">
+                <button class="tab-btn active" onclick="openTab('veiculos')">Cadastro de Veículos</button>
+                <button class="tab-btn" onclick="openTab('servicos')">Cadastro de Serviços</button>
+                <button class="tab-btn" onclick="openTab('consultas')">Consultas</button>
+            </div>
+
+            <div class="tab-content">
+                <div id="veiculos" class="tab-pane active">
+                    <h2>Cadastro de Veículos</h2>
+                    <form id="form-veiculo">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="placa">Placa *</label>
+                                <input type="text" id="placa" name="placa" required 
+                                       placeholder="ABC-1234" maxlength="8">
+                            </div>
+                            <div class="form-group">
+                                <label for="modelo">Modelo *</label>
+                                <input type="text" id="modelo" name="modelo" required 
+                                       placeholder="Ex: Honda Civic, Toyota Corolla">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="ano">Ano *</label>
+                                <input type="number" id="ano" name="ano" required 
+                                       min="1900" max="2025" placeholder="2025">
+                            </div>
+                            <div class="form-group">
+                                <label for="tipo">Tipo de Veículo *</label>
+                                <select id="tipo" name="tipo" required>
+                                    <option value="">Selecione...</option>
+                                    <option value="carro">Carro</option>
+                                    <option value="moto">Moto</option>
+                                    <option value="caminhao">Caminhão</option>
+                                    <option value="outro">Outro</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cliente">Cliente Responsável *</label>
+                            <input type="text" id="cliente" name="cliente" required 
+                                   placeholder="Nome completo do cliente">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="observacoes">Observações</label>
+                            <textarea id="observacoes" name="observacoes" rows="3" 
+                                      placeholder="Informações adicionais sobre o veículo"></textarea>
+                        </div>
+
+                        <div class="btn-group">
+                            <button type="submit" class="btn btn-primary">Salvar Veículo</button>
+                            <button type="button" class="btn btn-secondary" onclick="limparFormVeiculo()">Limpar</button>
+                            <button type="button" class="btn btn-danger" onclick="sair()">Sair</button>
+                        </div>
+                    </form>
+                </div>
+
+                
+                <div id="servicos" class="tab-pane">
+                    <h2>Cadastro de Serviços</h2>
+                    <form id="form-servico">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="placa-servico">Placa do Veículo *</label>
+                                <input type="text" id="placa-servico" name="placa-servico" required 
+                                       placeholder="Digite a placa ou selecione abaixo">
+                            </div>
+                            <div class="form-group">
+                                <label for="veiculo-lista">Veículos Cadastrados</label>
+                                <select id="veiculo-lista" onchange="selecionarVeiculo(this.value)">
+                                    <option value="">Selecionar veículo...</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="tipo-servico">Tipo de Serviço *</label>
+                                <select id="tipo-servico" name="tipo-servico" required>
+                                    <option value="">Selecione...</option>
+                                    <option value="troca-oleo">Troca de Óleo</option>
+                                    <option value="revisao">Revisão Geral</option>
+                                    <option value="alinhamento">Alinhamento e Balanceamento</option>
+                                    <option value="freios">Troca de Pastilhas de Freio</option>
+                                    <option value="suspensao">Revisão de Suspensão</option>
+                                    <option value="eletrica">Manutenção Elétrica</option>
+                                    <option value="pneus">Troca de Pneus</option>
+                                    <option value="outro">Outro Serviço</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="data-servico">Data do Serviço *</label>
+                                <input type="date" id="data-servico" name="data-servico" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="descricao-servico">Descrição do Serviço *</label>
+                            <textarea id="descricao-servico" name="descricao-servico" rows="4" required 
+                                      placeholder="Descreva detalhadamente o serviço realizado"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="valor-servico">Valor do Serviço (R$)</label>
+                            <input type="number" id="valor-servico" name="valor-servico" step="0.01" 
+                                   placeholder="0,00" min="0">
+                        </div>
+
+                        <div class="btn-group">
+                            <button type="submit" class="btn btn-primary">Salvar Serviço</button>
+                            <button type="button" class="btn btn-secondary" onclick="limparFormServico()">Limpar</button>
+                            <button type="button" class="btn btn-danger" onclick="sair()">Sair</button>
+                        </div>
+                    </form>
+                </div>
+
+            
+                <div id="consultas" class="tab-pane">
+                    <h2>Consultas e Relatórios</h2>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="filtro-placa">Filtrar por Placa</label>
+                            <input type="text" id="filtro-placa" placeholder="Digite a placa" 
+                                   onkeyup="filtrarTabelas()">
+                        </div>
+                        <div class="form-group">
+                            <label for="filtro-cliente">Filtrar por Cliente</label>
+                            <input type="text" id="filtro-cliente" placeholder="Digite o nome do cliente" 
+                                   onkeyup="filtrarTabelas()">
+                        </div>
+                    </div>
+
+                    <h3>Veículos Cadastrados</h3>
+                    <div class="table-responsive">
+                        <table class="data-table" id="tabela-veiculos">
+                            <thead>
+                                <tr>
+                                    <th>Placa</th>
+                                    <th>Modelo</th>
+                                    <th>Ano</th>
+                                    <th>Tipo</th>
+                                    <th>Cliente</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbody-veiculos">
+                                
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>Serviços Realizados</h3>
+                    <div class="table-responsive">
+                        <table class="data-table" id="tabela-servicos">
+                            <thead>
+                                <tr>
+                                    <th>Placa</th>
+                                    <th>Serviço</th>
+                                    <th>Data</th>
+                                    <th>Valor (R$)</th>
+                                    <th>Descrição</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbody-servicos">
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>AutoMecânica Master</h3>
+                    <p>Especializada em manutenção de carros e motos com qualidade e garantia.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contato</h3>
+                    <p>Email: contato@automecanica.com</p>
+                    <p>Telefone: (11) 9999-9999</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Horário de Funcionamento</h3>
+                    <p>Segunda a Sexta: 8h às 18h</p>
+                    <p>Sábado: 8h às 12h</p>
+                </div>
+            </div>
+            <div class="copyright">
+                © 2025 AutoMecânica Master. Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Armazenamento de dados
+        let veiculos = JSON.parse(localStorage.getItem('veiculos')) || [];
+        let servicos = JSON.parse(localStorage.getItem('servicos')) || [];
+
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', function() {
+            atualizarListaVeiculos();
+            atualizarTabelas();
+            document.getElementById('data-servico').valueAsDate = new Date();
+        });
+
+        // Funções de Tab
+        function openTab(tabName) {
+            const tabPanes = document.querySelectorAll('.tab-pane');
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            
+            tabPanes.forEach(pane => pane.classList.remove('active'));
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            
+            document.getElementById(tabName).classList.add('active');
+            document.querySelector(`button[onclick="openTab('${tabName}')"]`).classList.add('active');
+        }
+
+        // Formulário de Veículos
+        document.getElementById('form-veiculo').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const placa = document.getElementById('placa').value.toUpperCase();
+            const modelo = document.getElementById('modelo').value;
+            const ano = document.getElementById('ano').value;
+            const tipo = document.getElementById('tipo').value;
+            const cliente = document.getElementById('cliente').value;
+            const observacoes = document.getElementById('observacoes').value;
+
+            // Validar placa (formato brasileiro simples)
+            const placaRegex = /^[A-Z]{3}-?\d{4}$|^[A-Z]{3}\d[A-Z]\d{2}$/;
+            if (!placaRegex.test(placa.replace('-', ''))) {
+                alert('Por favor, insira uma placa válida (formato: ABC1234 ou ABC-1234)');
+                return;
+            }
+
+            // Verificar se placa já existe
+            if (veiculos.some(v => v.placa === placa)) {
+                alert('Já existe um veículo cadastrado com esta placa!');
+                return;
+            }
+
+            const veiculo = {
+                placa,
+                modelo,
+                ano: parseInt(ano),
+                tipo,
+                cliente,
+                observacoes,
+                dataCadastro: new Date().toISOString()
+            };
+
+            veiculos.push(veiculo);
+            localStorage.setItem('veiculos', JSON.stringify(veiculos));
+            
+            alert('Veículo cadastrado com sucesso!');
+            limparFormVeiculo();
+            atualizarListaVeiculos();
+            atualizarTabelas();
+        });
+
+        function limparFormVeiculo() {
+            document.getElementById('form-veiculo').reset();
+        }
+
+        // Formulário de Serviços
+        document.getElementById('form-servico').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const placa = document.getElementById('placa-servico').value.toUpperCase();
+            const tipoServico = document.getElementById('tipo-servico').value;
+            const dataServico = document.getElementById('data-servico').value;
+            const descricao = document.getElementById('descricao-servico').value;
+            const valor = parseFloat(document.getElementById('valor-servico').value) || 0;
+
+            // Verificar se o veículo existe
+            const veiculo = veiculos.find(v => v.placa === placa);
+            if (!veiculo) {
+                alert('Veículo não encontrado! Por favor, cadastre o veículo primeiro.');
+                return;
+            }
+
+            const servico = {
+                placa,
+                tipoServico,
+                dataServico,
+                descricao,
+                valor,
+                dataRegistro: new Date().toISOString()
+            };
+
+            servicos.push(servico);
+            localStorage.setItem('servicos', JSON.stringify(servicos));
+            
+            alert('Serviço cadastrado com sucesso!');
+            limparFormServico();
+            atualizarTabelas();
+        });
+
+        function limparFormServico() {
+            document.getElementById('form-servico').reset();
+            document.getElementById('data-servico').valueAsDate = new Date();
+        }
+
+        function selecionarVeiculo(placa) {
+            if (placa) {
+                document.getElementById('placa-servico').value = placa;
+            }
+        }
+
+        // Atualizar listas
+        function atualizarListaVeiculos() {
+            const select = document.getElementById('veiculo-lista');
+            select.innerHTML = '<option value="">Selecionar veículo...</option>';
+            
+            veiculos.forEach(veiculo => {
+                const option = document.createElement('option');
+                option.value = veiculo.placa;
+                option.textContent = `${veiculo.placa} - ${veiculo.modelo} (${veiculo.cliente})`;
+                select.appendChild(option);
+            });
+        }
+
+        function atualizarTabelas() {
+            const tbodyVeiculos = document.getElementById('tbody-veiculos');
+            const tbodyServicos = document.getElementById('tbody-servicos');
+            
+            // Limpar tabelas
+            tbodyVeiculos.innerHTML = '';
+            tbodyServicos.innerHTML = '';
+            
+            // Preencher veículos
+            veiculos.forEach(veiculo => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${veiculo.placa}</td>
+                    <td>${veiculo.modelo}</td>
+                    <td>${veiculo.ano}</td>
+                    <td>${veiculo.tipo}</td>
+                    <td>${veiculo.cliente}</td>
+                    <td>
+                        <button onclick="editarVeiculo('${veiculo.placa}')" class="btn btn-secondary">Editar</button>
+                        <button onclick="excluirVeiculo('${veiculo.placa}')" class="btn btn-danger">Excluir</button>
+                    </td>
+                `;
+                tbodyVeiculos.appendChild(row);
+            });
+            
+            // Preencher serviços
+            servicos.forEach(servico => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${servico.placa}</td>
+                    <td>${servico.tipoServico}</td>
+                    <td>${new Date(servico.dataServico).toLocaleDateString('pt-BR')}</td>
+                    <td>R$ ${servico.valor.toFixed(2)}</td>
+                    <td>${servico.descricao}</td>
+                `;
+                tbodyServicos.appendChild(row);
+            });
+        }
+
+        // Funções de CRUD
+        function editarVeiculo(placa) {
+            const veiculo = veiculos.find(v => v.placa === placa);
+            if (veiculo) {
+                document.getElementById('placa').value = veiculo.placa;
+                document.getElementById('modelo').value = veiculo.modelo;
+                document.getElementById('ano').value = veiculo.ano;
+                document.getElementById('tipo').value = veiculo.tipo;
+                document.getElementById('cliente').value = veiculo.cliente;
+                document.getElementById('observacoes').value = veiculo.observacoes || '';
+                
+                openTab('veiculos');
+                alert('Preencha os dados e clique em Salvar para atualizar. A placa não pode ser alterada.');
+            }
+        }
+
+        function excluirVeiculo(placa) {
+            if (confirm(`Tem certeza que deseja excluir o veículo ${placa}?`)) {
+                veiculos = veiculos.filter(v => v.placa !== placa);
+                servicos = servicos.filter(s => s.placa !== placa);
+                
+                localStorage.setItem('veiculos', JSON.stringify(veiculos));
+                localStorage.setItem('servicos', JSON.stringify(servicos));
+                
+                atualizarListaVeiculos();
+                atualizarTabelas();
+                alert('Veículo excluído com sucesso!');
+            }
+        }
+
+        // Filtros
+        function filtrarTabelas() {
+            const filtroPlaca = document.getElementById('filtro-placa').value.toLowerCase();
+            const filtroCliente = document.getElementById('filtro-cliente').value.toLowerCase();
+            
+            const linhasVeiculos = document.querySelectorAll('#tbody-veiculos tr');
+            const linhasServicos = document.querySelectorAll('#tbody-servicos tr');
+            
+            // Filtrar veículos
+            linhasVeiculos.forEach(linha => {
+                const placa = linha.cells[0].textContent.toLowerCase();
+                const cliente = linha.cells[4].textContent.toLowerCase();
+                
+                const mostra = 
+                    (filtroPlaca === '' || placa.includes(filtroPlaca)) &&
+                    (filtroCliente === '' || cliente.includes(filtroCliente));
+                
+                linha.style.display = mostra ? '' : 'none';
+            });
+            
+            // Filtrar serviços
+            linhasServicos.forEach(linha => {
+                const placa = linha.cells[0].textContent.toLowerCase();
+                const mostra = filtroPlaca === '' || placa.includes(filtroPlaca);
+                linha.style.display = mostra ? '' : 'none';
+            });
+        }
+
+        // Função Sair
+        function sair() {
+            if (confirm('Deseja realmente sair do sistema?')) {
+                alert('Sistema encerrado. Obrigado!');
+                // Em um sistema real, aqui poderia redirecionar para login ou fechar a aplicação
+            }
+        }
+    </script>
+</body>
+</html>
